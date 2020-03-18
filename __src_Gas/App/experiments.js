@@ -1,6 +1,6 @@
 /* eslint-disable max-params */
 import { looper } from '../../../GAS | Library/v01/utils/looper';
-import { goLocal, goExternal, goCache, getRandomData } from './tasks';
+import { tasks } from './tasks';
 import { runJbJ, runTbT, fire } from './helpers';
 
 import { SHEETS } from './config';
@@ -45,28 +45,51 @@ const tbt = (times, callback, desc) => () => {
 	});
 };
 
-const DESC = 'Wklejenie danych ';
-const DESC_RAND = 'Wygenerowanie losowej tablicy';
+const DESC = 'Modyfikacja entry by entry ';
 
 /**
  * Obiekt ze wszystkimi callbackami do eksperymetów
  */
 const exps = {
-	/* WYGENEROWANIE LOSOWEJ TABLICY 50 */
-	randomJbJ: fire(50, getRandomData, jbj, DESC_RAND, SHEETS.RAND),
-	randomTbT: fire(50, getRandomData, tbt, DESC_RAND, SHEETS.RAND),
+	/* Posortowane */
+	// 1
+	s1JbJ: fire(25, tasks.sort1, jbj, `${DESC}(1) s`, SHEETS.s1),
+	s1TbT: fire(25, tasks.sort1, tbt, `${DESC}(1) s`, SHEETS.s1),
+	// 2
+	s5JbJ: fire(25, tasks.sort5, jbj, `${DESC}(5) s`, SHEETS.s5),
+	s5TbT: fire(25, tasks.sort5, tbt, `${DESC}(5) s`, SHEETS.s5),
+	// 10
+	s10JbJ: fire(25, tasks.sort10, jbj, `${DESC}(10) s`, SHEETS.s10),
+	s10TbT: fire(25, tasks.sort10, tbt, `${DESC}(10) s`, SHEETS.s10),
+	// 25
+	s25JbJ: fire(25, tasks.sort25, jbj, `${DESC}(25) s`, SHEETS.s25),
+	s25TbT: fire(25, tasks.sort25, tbt, `${DESC}(25) s`, SHEETS.s25),
+	// 50
+	s50JbJ: fire(25, tasks.sort50, jbj, `${DESC}(50) s`, SHEETS.s50),
+	s50TbT: fire(25, tasks.sort50, tbt, `${DESC}(50) s`, SHEETS.s50),
+	// 100
+	s100JbJ: fire(25, tasks.sort100, jbj, `${DESC}(100) s`, SHEETS.s100),
+	s100TbT: fire(25, tasks.sort100, tbt, `${DESC}(100) s`, SHEETS.s100),
 
-	/* LOCAL 10 */
-	localJbJ: fire(10, goLocal, jbj, `${DESC}(local)`, SHEETS.LOCAL),
-	localTbT: fire(10, goLocal, tbt, `${DESC}(local)`, SHEETS.LOCAL),
-
-	/* EXTERNAL 10 */
-	extJbJ: fire(10, goExternal, jbj, `${DESC}(external)`, SHEETS.EXTER),
-	extTbT: fire(10, goExternal, tbt, `${DESC}(external)`, SHEETS.EXTER),
-
-	/* CACHE 30 */
-	cacheJbJ: fire(30, goCache, jbj, `${DESC}(cache)`, SHEETS.CACHE),
-	cacheTbT: fire(30, goCache, tbt, `${DESC}(cache)`, SHEETS.CACHE),
+	/* Nie posortowane */
+	// 1
+	u1JbJ: fire(25, tasks.unSort1, jbj, `${DESC}(1) u`, SHEETS.u1),
+	u1TbT: fire(25, tasks.unSort1, tbt, `${DESC}(1) u`, SHEETS.u1),
+	// 5
+	u5JbJ: fire(25, tasks.unSort5, jbj, `${DESC}(5) u`, SHEETS.u5),
+	u5TbT: fire(25, tasks.unSort5, tbt, `${DESC}(5) u`, SHEETS.u5),
+	// 10
+	u10JbJ: fire(25, tasks.unSort10, jbj, `${DESC}(10) u`, SHEETS.u10),
+	u10TbT: fire(25, tasks.unSort10, tbt, `${DESC}(10) u`, SHEETS.u10),
+	// 25
+	u25JbJ: fire(25, tasks.unSort25, jbj, `${DESC}(25) u`, SHEETS.u25),
+	u25TbT: fire(25, tasks.unSort25, tbt, `${DESC}(25) u`, SHEETS.u25),
+	// 50
+	u50JbJ: fire(25, tasks.unSort50, jbj, `${DESC}(50) u`, SHEETS.u50),
+	u50TbT: fire(25, tasks.unSort50, tbt, `${DESC}(50) u`, SHEETS.u50),
+	// 100
+	u100JbJ: fire(25, tasks.unSort100, jbj, `${DESC}(100) u`, SHEETS.u100),
+	u100TbT: fire(25, tasks.unSort100, tbt, `${DESC}(100) u`, SHEETS.u100),
 };
 
 export { exps };

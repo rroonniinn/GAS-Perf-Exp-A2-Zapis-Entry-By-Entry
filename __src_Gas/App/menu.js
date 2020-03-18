@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 // @ts-nocheck
 
 import { exps } from './experiments';
@@ -12,30 +13,57 @@ const menu = () => {
 	ui.createMenu('ICON')
 		.addSubMenu(
 			ui
-				.createMenu('Exp: Generuj losowe dane')
-				.addItem('Job by Job', 'menu.exps.randomJbJ')
-				.addItem('Task by Task', 'menu.exps.randomTbT')
+				.createMenu('Exp: Modyfikuj - 1')
+				.addItem('Sort - Job by Job', 'menu.exps.s1JbJ')
+				.addItem('Sort - Task by Task', 'menu.exps.s1TbT')
+				.addSeparator()
+				.addItem('Unsort - Job by Job', 'menu.exps.u1JbJ')
+				.addItem('Unsort - Task by Task', 'menu.exps.u1TbT')
 		)
-		.addSeparator()
 		.addSubMenu(
 			ui
-				.createMenu('Exp: Wklejenie lokalnie')
-				.addItem('Job by Job', 'menu.exps.localJbJ')
-				.addItem('Task by Task', 'menu.exps.localTbT')
+				.createMenu('Exp: Modyfikuj - 5')
+				.addItem('Sort - Job by Job', 'menu.exps.s5JbJ')
+				.addItem('Sort - Task by Task', 'menu.exps.s5TbT')
+				.addSeparator()
+				.addItem('Unsort - Job by Job', 'menu.exps.u5JbJ')
+				.addItem('Unsort - Task by Task', 'menu.exps.u5TbT')
 		)
-		.addSeparator()
 		.addSubMenu(
 			ui
-				.createMenu('Exp: Wklejenie external')
-				.addItem('Job by Job', 'menu.exps.extJbJ')
-				.addItem('Task by Task', 'menu.exps.extTbT')
+				.createMenu('Exp: Modyfikuj - 10')
+				.addItem('Sort - Job by Job', 'menu.exps.s10JbJ')
+				.addItem('Sort - Task by Task', 'menu.exps.s10TbT')
+				.addSeparator()
+				.addItem('Unsort - Job by Job', 'menu.exps.u10JbJ')
+				.addItem('Unsort - Task by Task', 'menu.exps.u10TbT')
 		)
-		.addSeparator()
 		.addSubMenu(
 			ui
-				.createMenu('Exp: Wklejenie Cache')
-				.addItem('Job by Job', 'menu.exps.cacheJbJ')
-				.addItem('Task by Task', 'menu.exps.cacheTbT')
+				.createMenu('Exp: Modyfikuj - 25')
+				.addItem('Sort - Job by Job', 'menu.exps.s25JbJ')
+				.addItem('Sort - Task by Task', 'menu.exps.s25TbT')
+				.addSeparator()
+				.addItem('Unsort - Job by Job', 'menu.exps.u25JbJ')
+				.addItem('Unsort - Task by Task', 'menu.exps.u25TbT')
+		)
+		.addSubMenu(
+			ui
+				.createMenu('Exp: Modyfikuj - 50')
+				.addItem('Sort - Job by Job', 'menu.exps.s50JbJ')
+				.addItem('Sort - Task by Task', 'menu.exps.s50TbT')
+				.addSeparator()
+				.addItem('Unsort - Job by Job', 'menu.exps.u50JbJ')
+				.addItem('Unsort - Task by Task', 'menu.exps.u50TbT')
+		)
+		.addSubMenu(
+			ui
+				.createMenu('Exp: Modyfikuj - 100')
+				.addItem('Sort - Job by Job', 'menu.exps.s100JbJ')
+				.addItem('Sort - Task by Task', 'menu.exps.s100TbT')
+				.addSeparator()
+				.addItem('Unsort - Job by Job', 'menu.exps.u100JbJ')
+				.addItem('Unsort - Task by Task', 'menu.exps.u100TbT')
 		)
 		.addSeparator()
 		.addItem('Test', 'menu.test')

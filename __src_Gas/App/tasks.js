@@ -1,62 +1,69 @@
-import { randomIntegersArray2d } from '../../../GAS | Library/v02/arr/randomIntegersArray2d';
 import { paste } from '../../../GAS | Library/v02/gas/paste';
 import { getSheet } from '../../../GAS | Library/v02/gas/getSheet';
 import { getIdFromUrl } from '../../../GAS | Library/v02/gas/getIdFromUrl';
-import { crusherCache } from '../../../GAS | Library/v02/cache/crusherCache';
-import { LOCAL_SHEET, EXT_SHEET_URL, EXT_SHEET_NAME } from './config';
+import { randomIntegersArray } from '../../../GAS | Library/v02/arr/randomIntegersArray';
+
+import { EXT_SHEET_URL, EXT_SHEET_NAME, MOD_ROW } from './config';
 
 /**
- * Obiekt z funkcjami generującymi losowe tablice z numerami od 0 do 1000
- * o różnej liczbie wierszy i 15 kolumnach
- * @type {Object<string, function>} generateRandomArrs
+ * Helper
+ * Pobiera odpowiedni obiekt arkusza
+ * @param {string} sheetCode Zdefiniowany kod zadania np. l100
  */
+const getExtSheet = sheetCode =>
+	getSheet(EXT_SHEET_NAME, getIdFromUrl(EXT_SHEET_URL[sheetCode]));
 
-const generateData = {
-	l100: () => randomIntegersArray2d(100, 15),
-	l200: () => randomIntegersArray2d(200, 15),
-	l500: () => randomIntegersArray2d(500, 15),
-	l1000: () => randomIntegersArray2d(1000, 15),
-	l2000: () => randomIntegersArray2d(2000, 15),
-	l4000: () => randomIntegersArray2d(4000, 15),
-	l8000: () => randomIntegersArray2d(8000, 15),
-	l16000: () => randomIntegersArray2d(16000, 15),
+/**
+ * Helper
+ * Pobiera numer ze stringa
+ * @param {string} str Zdefiniowany kod zadania np. l100
+ */
+const getNumbFromStr = str => Number(/[0-9]+/.exec(str)[0]);
+
+/**
+ * Modyfikuje określoną liczbę wpisów we wskazanym arkuszu
+ * @param {number} quant Liczba modyfikacji
+ * @param {boolean} sort Czy sortować indeksy
+ * @return {(sheetCode: string) => function} sheetCode - Zdefiniowany kod zadania np. l100
+ */
+const modifiyEntries = (quant, sort) => sheetCode => () => {
+	const sheet = getExtSheet(sheetCode);
+	const maxIdx = getNumbFromStr(sheetCode) - 1;
+	const idxs = randomIntegersArray(quant, 0, maxIdx, true, false, sort);
+
+	idxs.forEach(idx => {
+		paste(sheet, `A${idx + 1}:O`, MOD_ROW, {
+			notRemoveFilers: true,
+			restrictCleanup: 'preserve',
+			notRemoveEmptys: true,
+		});
+		console.log(
+			`Paste into: '${sheetCode}'. Rows nr: ${idx}. Total rows: '${quant}'.`
+		);
+	});
 };
 
-/**
- * Pobiera odpowiednią funkcję generującą losowe dane
- * @param {string} taskCode Zdefiniowany kod zadania np. l100
- */
-const getRandomData = taskCode => generateData[taskCode];
-
-/**
- * Wygeneruj losowe liczby i wklej je lokalnie
- * @param {string} taskCode Zdefiniowany kod zadania np. l100
- */
-const goLocal = taskCode => () => {
-	const randomData = generateData[taskCode]();
-	paste(getSheet(LOCAL_SHEET[taskCode]), 'A1', randomData);
+const tasks = {
+	/**
+	 * Funkcje z posortowanym indeksem - czyli modyfikacje są ułożone
+	 * w kolejności występowania w docelowym arkuszu
+	 */
+	sort1: modifiyEntries(1, true),
+	sort5: modifiyEntries(5, true),
+	sort10: modifiyEntries(10, true),
+	sort25: modifiyEntries(25, true),
+	sort50: modifiyEntries(50, true),
+	sort100: modifiyEntries(100, true),
+	/**
+	 * Funkcje z nieposortowanym indeksem - czyli modyfikacje są ułożone
+	 * w kolejności występowania w docelowym arkuszu
+	 */
+	unSort1: modifiyEntries(1, false),
+	unSort5: modifiyEntries(5, false),
+	unSort10: modifiyEntries(10, false),
+	unSort25: modifiyEntries(25, false),
+	unSort50: modifiyEntries(50, false),
+	unSort100: modifiyEntries(100, false),
 };
 
-/**
- * Wygeneruj losowe liczby i wklej je do zewnętrznego arkusza
- * @param {string} taskCode Zdefiniowany kod zadania np. l100
- */
-const goExternal = taskCode => () => {
-	const randomData = generateData[taskCode]();
-	paste(
-		getSheet(EXT_SHEET_NAME, getIdFromUrl(EXT_SHEET_URL[taskCode])),
-		'A1',
-		randomData
-	);
-};
-
-/**
- * Wygeneruj losowe liczby  i wklej je do cacha
- * @param {string} taskCode Zdefiniowany kod zadania np. l100
- */
-const goCache = taskCode => () => {
-	const randomData = generateData[taskCode]();
-	crusherCache.put(taskCode, randomData, 120);
-};
-
-export { goLocal, goExternal, goCache, getRandomData };
+export { tasks };

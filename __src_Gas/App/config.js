@@ -1,34 +1,36 @@
 /**
  * Times Sheets
  * @typedef {Object} TimesSheets
- * @property {string} LOCAL Wklejka lokalna
- * @property {string} EXTER Wklejka do zewnętrznych plików
- * @property {string} CACHE Wklejka do cacha
- * @property {string} RAND Wklejka do randomowych danych
+ * @property {string} s1 Liczba wierszy do zmiany 1 (sortowana kolejność)
+ * @property {string} s5 Liczba wierszy do zmiany 5 (sortowana kolejność)
+ * @property {string} s10 Liczba wierszy do zmiany 10 (sortowana kolejność)
+ * @property {string} s25 Liczba wierszy do zmiany 25 (sortowana kolejność)
+ * @property {string} s50 Liczba wierszy do zmiany 50 (sortowana kolejność)
+ * @property {string} s100 Liczba wierszy do zmiany 100 (sortowana kolejność)
+ * @property {string} u1 Liczba wierszy do zmiany 1 (niesortowana kolejność)
+ * @property {string} u5 Liczba wierszy do zmiany 5 (niesortowana kolejność)
+ * @property {string} u10 Liczba wierszy do zmiany 10 (niesortowana kolejność)
+ * @property {string} u25 Liczba wierszy do zmiany 25 (niesortowana kolejność)
+ * @property {string} u50 Liczba wierszy do zmiany 50 (niesortowana kolejność)
+ * @property {string} u100 Liczba wierszy do zmiany 100 (niesortowana kolejność)
+
  */
 /**
  * @type {TimesSheets} SHEETS Arkusze do wklejania wyników eksperymentów
  */
 const SHEETS = {
-	LOCAL: 'T: Wklejenie lokalnie',
-	EXTER: 'T: Wklejenie external',
-	CACHE: 'T: Wklejenie cache',
-	RAND: 'T: Generowanie tablic',
-};
-
-/**
- * Arkusze lokalne do których wklejamy losowe dane podczas eksperymentu
- * @type {Object<string, string>} LOCAL_SHEET
- */
-const LOCAL_SHEET = {
-	l100: 'res100',
-	l200: 'res200',
-	l500: 'res500',
-	l1000: 'res1000',
-	l2000: 'res2000',
-	l4000: 'res4000',
-	l8000: 'res8000',
-	l16000: 'res16000',
+	s1: 'T: 1 (s)',
+	s5: 'T: 5 (s)',
+	s10: 'T: 10 (s)',
+	s25: 'T: 25 (s)',
+	s50: 'T: 50 (s)',
+	s100: 'T: 100 (s)',
+	u1: 'T: 1 (u)',
+	u5: 'T: 5 (u)',
+	u10: 'T: 10 (u)',
+	u25: 'T: 25 (u)',
+	u50: 'T: 50 (u)',
+	u100: 'T: 100 (u)',
 };
 
 /**
@@ -59,4 +61,27 @@ const EXT_SHEET_URL = {
  */
 const EXT_SHEET_NAME = 'res';
 
-export { SHEETS, LOCAL_SHEET, EXT_SHEET_URL, EXT_SHEET_NAME };
+/**
+ * @type {array[]} Zmodyfikowany wiersz do wklejenia
+ */
+const MOD_ROW = [
+	[
+		'xyz',
+		'xyz',
+		'xyz',
+		'xyz',
+		'xyz',
+		'xyz',
+		'xyz',
+		'xyz',
+		'xyz',
+		'xyz',
+		'xyz',
+		'xyz',
+		'xyz',
+		'xyz',
+		'xyz',
+	],
+];
+
+export { SHEETS, EXT_SHEET_URL, EXT_SHEET_NAME, MOD_ROW };
