@@ -2,10 +2,12 @@
 // @ts-nocheck
 
 import { exps } from './experiments';
+import { removeExtremes } from './removeExtremes';
 
 global.menu = {
 	test: () => console.log('hello'),
 	exps,
+	removeExtremes,
 };
 
 const menu = () => {
@@ -65,6 +67,8 @@ const menu = () => {
 				.addItem('Unsort - Job by Job', 'menu.exps.u100JbJ')
 				.addItem('Unsort - Task by Task', 'menu.exps.u100TbT')
 		)
+		.addSeparator()
+		.addItem('Remove extremes', 'menu.removeExtremes')
 		.addSeparator()
 		.addItem('Test', 'menu.test')
 		.addSeparator()
