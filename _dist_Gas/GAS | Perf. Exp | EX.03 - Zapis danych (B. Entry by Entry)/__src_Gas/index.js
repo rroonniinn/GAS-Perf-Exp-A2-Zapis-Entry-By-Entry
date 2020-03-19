@@ -1,5 +1,29 @@
 var global=this;function menu() {
 }
+function s1TbT() {
+}
+function s5TbT() {
+}
+function s10TbT() {
+}
+function s25TbT() {
+}
+function s50TbT() {
+}
+function s100TbT() {
+}
+function u1TbT() {
+}
+function u5TbT() {
+}
+function u10TbT() {
+}
+function u25TbT() {
+}
+function u50TbT() {
+}
+function u100TbT() {
+}
 function onOpen() {
 }(function (factory) {
 	typeof define === 'function' && define.amd ? define('index', factory) :
@@ -775,11 +799,6 @@ function onOpen() {
 	 */
 
 	const EXT_SHEET_NAME = 'res';
-	/**
-	 * @type {array[]} Zmodyfikowany wiersz do wklejenia
-	 */
-
-	const MOD_ROW = [['xyz', 'xyz', 'xyz', 'xyz', 'xyz', 'xyz', 'xyz', 'xyz', 'xyz', 'xyz', 'xyz', 'xyz', 'xyz', 'xyz', 'xyz']];
 
 	/**
 	 * Helper
@@ -809,7 +828,8 @@ function onOpen() {
 	  const maxIdx = getNumbFromStr(sheetCode) - 1;
 	  const idxs = randomIntegersArray(quant, 0, maxIdx, true, false, sort);
 	  idxs.forEach(idx => {
-	    paste(sheet, `A${idx + 1}:O`, MOD_ROW, {
+	    // paste(sheet, `A${idx + 1}:O`, MOD_ROW, {
+	    paste(sheet, `A${idx + 1}:O`, [randomIntegersArray(15, 0, 30)], {
 	      notRemoveFilers: true,
 	      restrictCleanup: 'preserve',
 	      notRemoveEmptys: true
@@ -958,43 +978,43 @@ function onOpen() {
 	const exps = {
 	  /* Posortowane */
 	  // 1
-	  s1JbJ: fire(50, tasks.sort1, jbj, `${DESC}(1) s`, SHEETS.s1),
-	  s1TbT: fire(50, tasks.sort1, tbt, `${DESC}(1) s`, SHEETS.s1),
+	  s1JbJ: fire(1, tasks.sort1, jbj, `${DESC}(1) s`, SHEETS.s1),
+	  s1TbT: fire(1, tasks.sort1, tbt, `${DESC}(1) s`, SHEETS.s1),
 	  // 2
-	  s5JbJ: fire(50, tasks.sort5, jbj, `${DESC}(5) s`, SHEETS.s5),
-	  s5TbT: fire(50, tasks.sort5, tbt, `${DESC}(5) s`, SHEETS.s5),
+	  s5JbJ: fire(1, tasks.sort5, jbj, `${DESC}(5) s`, SHEETS.s5),
+	  s5TbT: fire(1, tasks.sort5, tbt, `${DESC}(5) s`, SHEETS.s5),
 	  // 10
-	  s10JbJ: fire(50, tasks.sort10, jbj, `${DESC}(10) s`, SHEETS.s10),
-	  s10TbT: fire(50, tasks.sort10, tbt, `${DESC}(10) s`, SHEETS.s10),
+	  s10JbJ: fire(1, tasks.sort10, jbj, `${DESC}(10) s`, SHEETS.s10),
+	  s10TbT: fire(1, tasks.sort10, tbt, `${DESC}(10) s`, SHEETS.s10),
 	  // 25
-	  s25JbJ: fire(50, tasks.sort25, jbj, `${DESC}(25) s`, SHEETS.s25),
-	  s25TbT: fire(50, tasks.sort25, tbt, `${DESC}(25) s`, SHEETS.s25),
+	  s25JbJ: fire(1, tasks.sort25, jbj, `${DESC}(25) s`, SHEETS.s25),
+	  s25TbT: fire(1, tasks.sort25, tbt, `${DESC}(25) s`, SHEETS.s25),
 	  // 50
-	  s50JbJ: fire(50, tasks.sort50, jbj, `${DESC}(50) s`, SHEETS.s50),
-	  s50TbT: fire(50, tasks.sort50, tbt, `${DESC}(50) s`, SHEETS.s50),
+	  s50JbJ: fire(1, tasks.sort50, jbj, `${DESC}(50) s`, SHEETS.s50),
+	  s50TbT: fire(1, tasks.sort50, tbt, `${DESC}(50) s`, SHEETS.s50),
 	  // 100
-	  s100JbJ: fire(50, tasks.sort100, jbj, `${DESC}(100) s`, SHEETS.s100),
-	  s100TbT: fire(50, tasks.sort100, tbt, `${DESC}(100) s`, SHEETS.s100),
+	  s100JbJ: fire(1, tasks.sort100, jbj, `${DESC}(100) s`, SHEETS.s100),
+	  s100TbT: fire(1, tasks.sort100, tbt, `${DESC}(100) s`, SHEETS.s100),
 
 	  /* Nie posortowane */
 	  // 1
-	  u1JbJ: fire(50, tasks.unSort1, jbj, `${DESC}(1) u`, SHEETS.u1),
-	  u1TbT: fire(50, tasks.unSort1, tbt, `${DESC}(1) u`, SHEETS.u1),
+	  u1JbJ: fire(1, tasks.unSort1, jbj, `${DESC}(1) u`, SHEETS.u1),
+	  u1TbT: fire(1, tasks.unSort1, tbt, `${DESC}(1) u`, SHEETS.u1),
 	  // 5
-	  u5JbJ: fire(50, tasks.unSort5, jbj, `${DESC}(5) u`, SHEETS.u5),
-	  u5TbT: fire(50, tasks.unSort5, tbt, `${DESC}(5) u`, SHEETS.u5),
+	  u5JbJ: fire(1, tasks.unSort5, jbj, `${DESC}(5) u`, SHEETS.u5),
+	  u5TbT: fire(1, tasks.unSort5, tbt, `${DESC}(5) u`, SHEETS.u5),
 	  // 10
-	  u10JbJ: fire(50, tasks.unSort10, jbj, `${DESC}(10) u`, SHEETS.u10),
-	  u10TbT: fire(50, tasks.unSort10, tbt, `${DESC}(10) u`, SHEETS.u10),
+	  u10JbJ: fire(1, tasks.unSort10, jbj, `${DESC}(10) u`, SHEETS.u10),
+	  u10TbT: fire(1, tasks.unSort10, tbt, `${DESC}(10) u`, SHEETS.u10),
 	  // 25
-	  u25JbJ: fire(50, tasks.unSort25, jbj, `${DESC}(25) u`, SHEETS.u25),
-	  u25TbT: fire(50, tasks.unSort25, tbt, `${DESC}(25) u`, SHEETS.u25),
+	  u25JbJ: fire(1, tasks.unSort25, jbj, `${DESC}(25) u`, SHEETS.u25),
+	  u25TbT: fire(1, tasks.unSort25, tbt, `${DESC}(25) u`, SHEETS.u25),
 	  // 50
-	  u50JbJ: fire(50, tasks.unSort50, jbj, `${DESC}(50) u`, SHEETS.u50),
-	  u50TbT: fire(50, tasks.unSort50, tbt, `${DESC}(50) u`, SHEETS.u50),
+	  u50JbJ: fire(1, tasks.unSort50, jbj, `${DESC}(50) u`, SHEETS.u50),
+	  u50TbT: fire(1, tasks.unSort50, tbt, `${DESC}(50) u`, SHEETS.u50),
 	  // 100
-	  u100JbJ: fire(50, tasks.unSort100, jbj, `${DESC}(100) u`, SHEETS.u100),
-	  u100TbT: fire(50, tasks.unSort100, tbt, `${DESC}(100) u`, SHEETS.u100)
+	  u100JbJ: fire(1, tasks.unSort100, jbj, `${DESC}(100) u`, SHEETS.u100),
+	  u100TbT: fire(1, tasks.unSort100, tbt, `${DESC}(100) u`, SHEETS.u100)
 	};
 
 	const removeExtremes = () => {
@@ -1022,6 +1042,54 @@ function onOpen() {
 	  test: () => console.log('hello'),
 	  exps,
 	  removeExtremes
+	}; // Funkcje wystawione jako triggery odplana co 15 min
+
+	global.s1TbT = () => {
+	  exps.s1TbT();
+	};
+
+	global.s5TbT = () => {
+	  exps.s5TbT();
+	};
+
+	global.s10TbT = () => {
+	  exps.s10TbT();
+	};
+
+	global.s25TbT = () => {
+	  exps.s25TbT();
+	};
+
+	global.s50TbT = () => {
+	  exps.s50TbT();
+	};
+
+	global.s100TbT = () => {
+	  exps.s100TbT();
+	};
+
+	global.u1TbT = () => {
+	  exps.u1TbT();
+	};
+
+	global.u5TbT = () => {
+	  exps.u5TbT();
+	};
+
+	global.u10TbT = () => {
+	  exps.u10TbT();
+	};
+
+	global.u25TbT = () => {
+	  exps.u25TbT();
+	};
+
+	global.u50TbT = () => {
+	  exps.u50TbT();
+	};
+
+	global.u100TbT = () => {
+	  exps.u100TbT();
 	};
 
 	const menu = () => {

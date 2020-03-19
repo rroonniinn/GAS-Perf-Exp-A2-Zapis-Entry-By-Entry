@@ -10,6 +10,44 @@ global.menu = {
 	removeExtremes,
 };
 
+// Funkcje wystawione jako triggery odplana co 15 min
+global.s1TbT = () => {
+	exps.s1TbT();
+};
+global.s5TbT = () => {
+	exps.s5TbT();
+};
+global.s10TbT = () => {
+	exps.s10TbT();
+};
+global.s25TbT = () => {
+	exps.s25TbT();
+};
+global.s50TbT = () => {
+	exps.s50TbT();
+};
+global.s100TbT = () => {
+	exps.s100TbT();
+};
+global.u1TbT = () => {
+	exps.u1TbT();
+};
+global.u5TbT = () => {
+	exps.u5TbT();
+};
+global.u10TbT = () => {
+	exps.u10TbT();
+};
+global.u25TbT = () => {
+	exps.u25TbT();
+};
+global.u50TbT = () => {
+	exps.u50TbT();
+};
+global.u100TbT = () => {
+	exps.u100TbT();
+};
+
 const menu = () => {
 	const ui = SpreadsheetApp.getUi();
 	ui.createMenu('ICON')
