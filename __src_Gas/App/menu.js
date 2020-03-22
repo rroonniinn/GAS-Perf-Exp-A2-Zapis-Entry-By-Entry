@@ -1,13 +1,18 @@
 /* eslint-disable max-lines-per-function */
 // @ts-nocheck
 
-import { exps } from './experiments';
+import { exps, runRandomSingle } from './experiments';
 import { removeExtremes } from './removeExtremes';
 
 global.menu = {
 	test: () => console.log('hello'),
 	exps,
 	removeExtremes,
+};
+
+// Funkcja do trigerów co minutę
+global.runRandomSingle = () => {
+	runRandomSingle();
 };
 
 // Funkcje wystawione jako triggery odplana co 15 min
@@ -109,6 +114,7 @@ const menu = () => {
 		.addItem('Remove extremes', 'menu.removeExtremes')
 		.addSeparator()
 		.addItem('Test', 'menu.test')
+		.addItem('runRandomSingle', 'runRandomSingle')
 		.addSeparator()
 		.addItem('Update menu', 'onOpen')
 		.addToUi();

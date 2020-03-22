@@ -1,9 +1,10 @@
 /* eslint-disable max-params */
 import { looper } from '../../../GAS | Library/v01/utils/looper';
-import { tasks } from './tasks';
-import { runJbJ, runTbT, fire } from './helpers';
+import { randomFromArray } from '../../../GAS | Library/v02/arr/randomFromArray';
 
 import { SHEETS } from './config';
+import { runJbJ, runTbT, fire, single } from './helpers';
+import { tasks } from './tasks';
 
 /* ***************** Strukrura testów ******************* */
 
@@ -53,23 +54,23 @@ const DESC = 'Modyfikacja entry by entry ';
 const exps = {
 	/* Posortowane */
 	// 1
-	s1JbJ: fire(1, tasks.sort1, jbj, `${DESC}(1) s`, SHEETS.s1),
-	s1TbT: fire(1, tasks.sort1, tbt, `${DESC}(1) s`, SHEETS.s1),
+	s1JbJ: fire(25, tasks.sort1, jbj, `${DESC}(1) s`, SHEETS.s1),
+	s1TbT: fire(25, tasks.sort1, tbt, `${DESC}(1) s`, SHEETS.s1),
 	// 2
-	s5JbJ: fire(1, tasks.sort5, jbj, `${DESC}(5) s`, SHEETS.s5),
-	s5TbT: fire(1, tasks.sort5, tbt, `${DESC}(5) s`, SHEETS.s5),
+	s5JbJ: fire(25, tasks.sort5, jbj, `${DESC}(5) s`, SHEETS.s5),
+	s5TbT: fire(25, tasks.sort5, tbt, `${DESC}(5) s`, SHEETS.s5),
 	// 10
-	s10JbJ: fire(1, tasks.sort10, jbj, `${DESC}(10) s`, SHEETS.s10),
-	s10TbT: fire(1, tasks.sort10, tbt, `${DESC}(10) s`, SHEETS.s10),
+	s10JbJ: fire(25, tasks.sort10, jbj, `${DESC}(10) s`, SHEETS.s10),
+	s10TbT: fire(25, tasks.sort10, tbt, `${DESC}(10) s`, SHEETS.s10),
 	// 25
-	s25JbJ: fire(1, tasks.sort25, jbj, `${DESC}(25) s`, SHEETS.s25),
-	s25TbT: fire(1, tasks.sort25, tbt, `${DESC}(25) s`, SHEETS.s25),
+	s25JbJ: fire(25, tasks.sort25, jbj, `${DESC}(25) s`, SHEETS.s25),
+	s25TbT: fire(25, tasks.sort25, tbt, `${DESC}(25) s`, SHEETS.s25),
 	// 50
-	s50JbJ: fire(1, tasks.sort50, jbj, `${DESC}(50) s`, SHEETS.s50),
-	s50TbT: fire(1, tasks.sort50, tbt, `${DESC}(50) s`, SHEETS.s50),
+	s50JbJ: fire(25, tasks.sort50, jbj, `${DESC}(50) s`, SHEETS.s50),
+	s50TbT: fire(25, tasks.sort50, tbt, `${DESC}(50) s`, SHEETS.s50),
 	// 100
-	s100JbJ: fire(1, tasks.sort100, jbj, `${DESC}(100) s`, SHEETS.s100),
-	s100TbT: fire(1, tasks.sort100, tbt, `${DESC}(100) s`, SHEETS.s100),
+	s100JbJ: fire(25, tasks.sort100, jbj, `${DESC}(100) s`, SHEETS.s100),
+	s100TbT: fire(25, tasks.sort100, tbt, `${DESC}(100) s`, SHEETS.s100),
 
 	/* Nie posortowane */
 	// 1
@@ -92,4 +93,34 @@ const exps = {
 	u100TbT: fire(1, tasks.unSort100, tbt, `${DESC}(100) u`, SHEETS.u100),
 };
 
-export { exps };
+/* ******************** TESTY POJEDYŃCZE *********** */
+const randomCode = [
+	'l100',
+	'l200',
+	'l500',
+	'l1000',
+	'l2000',
+	'l4000',
+	'l8000',
+	'l16000',
+];
+// Nadanie nazw funkcjom:
+
+const randomFn = [
+	['unSort1', tasks.unSort1],
+	['unSort5', tasks.unSort5],
+	['unSort10', tasks.unSort10],
+	['unSort25', tasks.unSort25],
+	['unSort50', tasks.unSort50],
+	['unSort100', tasks.unSort100],
+];
+
+const runRandomSingle = () => {
+	const [code] = randomFromArray(randomCode, 1);
+	const [fn] = randomFromArray(randomFn, 1);
+	console.log(`Arkusz: ${code} | Fn: ${fn[0]}`);
+
+	single(code, fn);
+};
+
+export { exps, runRandomSingle };

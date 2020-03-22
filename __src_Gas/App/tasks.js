@@ -56,7 +56,7 @@ const tasks = {
 	sort50: modifiyEntries(50, true),
 	sort100: modifiyEntries(100, true),
 	/**
-	 * Funkcje z nieposortowanym indeksem - czyli modyfikacje są ułożone
+	 * Funkcje z nieposortowanym indeksem - czyli modyfikacje nie są ułożone
 	 * w kolejności występowania w docelowym arkuszu
 	 */
 	unSort1: modifiyEntries(1, false),
