@@ -1,59 +1,40 @@
 /* eslint-disable max-lines-per-function */
 // @ts-nocheck
 
-import { exps, runRandomSingle } from './experiments';
-import { removeExtremes } from './removeExtremes';
 import { ditributeToOtherFiles } from './ditributeToOtherFiles';
+import {
+	exps,
+	randomExternal,
+	randomLocal,
+	randomHub,
+} from './experiments';
+import { copySheetsToLocalTest, deleteOldDate } from './tasks';
+import { startTimeTrigger, cancelTimeTriggers } from './triggers';
+
+// Funkcja do trigerów co minutę
+global.randomExternal = () => {
+	randomExternal();
+};
+global.randomLocal = () => {
+	randomLocal();
+};
+global.randomHub = () => {
+	randomHub();
+};
 
 global.menu = {
 	test: () => console.log('hello'),
 	exps,
-	removeExtremes,
 	ditributeToOtherFiles,
+	copySheetsToLocalTest,
+	deleteOldDate,
+	triggers: {
+		ext: () => startTimeTrigger('randomExternal'),
+		loc: () => startTimeTrigger('randomLocal'),
+		hub: () => startTimeTrigger('randomHub'),
+		stop: cancelTimeTriggers,
+	},
 };
-
-// Funkcja do trigerów co minutę
-// global.runRandomSingle = () => {
-// 	runRandomSingle();
-// };
-
-// Funkcje wystawione jako triggery odplana co 15 min
-// global.s1TbT = () => {
-// 	exps.s1TbT();
-// };
-// global.s5TbT = () => {
-// 	exps.s5TbT();
-// };
-// global.s10TbT = () => {
-// 	exps.s10TbT();
-// };
-// global.s25TbT = () => {
-// 	exps.s25TbT();
-// };
-// global.s50TbT = () => {
-// 	exps.s50TbT();
-// };
-// global.s100TbT = () => {
-// 	exps.s100TbT();
-// };
-// global.u1TbT = () => {
-// 	exps.u1TbT();
-// };
-// global.u5TbT = () => {
-// 	exps.u5TbT();
-// };
-// global.u10TbT = () => {
-// 	exps.u10TbT();
-// };
-// global.u25TbT = () => {
-// 	exps.u25TbT();
-// };
-// global.u50TbT = () => {
-// 	exps.u50TbT();
-// };
-// global.u100TbT = () => {
-// 	exps.u100TbT();
-// };
 
 const menu = () => {
 	const ui = SpreadsheetApp.getUi();
@@ -113,11 +94,16 @@ const menu = () => {
 				.addItem('Unsort - Task by Task', 'menu.exps.u100TbT')
 		)
 		.addSeparator()
-		.addItem('Remove extremes', 'menu.removeExtremes')
+		.addItem(
+			'Uruchom Trigger dla Random External',
+			'menu.triggers.ext'
+		)
+		.addItem('Uruchom Trigger dla Random Local', 'menu.triggers.loc')
+		.addItem('Uruchom Trigger dla Random Hub', 'menu.triggers.hub')
 		.addSeparator()
-		.addItem('Distribute', 'menu.ditributeToOtherFiles')
+		.addItem('Zatrzymaj triggery', 'menu.triggers.stop')
+		.addSeparator()
 		.addItem('Test', 'menu.test')
-		.addItem('runRandomSingle', 'runRandomSingle')
 		.addSeparator()
 		.addItem('Update menu', 'onOpen')
 		.addToUi();

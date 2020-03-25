@@ -74,23 +74,23 @@ const exps = {
 
 	/* Nie posortowane */
 	// 1
-	u1JbJ: fire(1, tasks.unSort1, jbj, `${DESC}(1) u`, SHEETS.u1),
-	u1TbT: fire(1, tasks.unSort1, tbt, `${DESC}(1) u`, SHEETS.u1),
+	u1JbJ: fire(1, tasks.ext1, jbj, `${DESC}(1) u`, SHEETS.u1),
+	u1TbT: fire(1, tasks.ext1, tbt, `${DESC}(1) u`, SHEETS.u1),
 	// 5
-	u5JbJ: fire(1, tasks.unSort5, jbj, `${DESC}(5) u`, SHEETS.u5),
-	u5TbT: fire(1, tasks.unSort5, tbt, `${DESC}(5) u`, SHEETS.u5),
+	u5JbJ: fire(1, tasks.ext5, jbj, `${DESC}(5) u`, SHEETS.u5),
+	u5TbT: fire(1, tasks.ext5, tbt, `${DESC}(5) u`, SHEETS.u5),
 	// 10
-	u10JbJ: fire(1, tasks.unSort10, jbj, `${DESC}(10) u`, SHEETS.u10),
-	u10TbT: fire(1, tasks.unSort10, tbt, `${DESC}(10) u`, SHEETS.u10),
+	u10JbJ: fire(1, tasks.ext10, jbj, `${DESC}(10) u`, SHEETS.u10),
+	u10TbT: fire(1, tasks.ext10, tbt, `${DESC}(10) u`, SHEETS.u10),
 	// 25
-	u25JbJ: fire(1, tasks.unSort25, jbj, `${DESC}(25) u`, SHEETS.u25),
-	u25TbT: fire(1, tasks.unSort25, tbt, `${DESC}(25) u`, SHEETS.u25),
+	u25JbJ: fire(1, tasks.ext25, jbj, `${DESC}(25) u`, SHEETS.u25),
+	u25TbT: fire(1, tasks.ext25, tbt, `${DESC}(25) u`, SHEETS.u25),
 	// 50
-	u50JbJ: fire(1, tasks.unSort50, jbj, `${DESC}(50) u`, SHEETS.u50),
-	u50TbT: fire(1, tasks.unSort50, tbt, `${DESC}(50) u`, SHEETS.u50),
+	u50JbJ: fire(1, tasks.ext50, jbj, `${DESC}(50) u`, SHEETS.u50),
+	u50TbT: fire(1, tasks.ext50, tbt, `${DESC}(50) u`, SHEETS.u50),
 	// 100
-	u100JbJ: fire(1, tasks.unSort100, jbj, `${DESC}(100) u`, SHEETS.u100),
-	u100TbT: fire(1, tasks.unSort100, tbt, `${DESC}(100) u`, SHEETS.u100),
+	u100JbJ: fire(1, tasks.ext100, jbj, `${DESC}(100) u`, SHEETS.u100),
+	u100TbT: fire(1, tasks.ext100, tbt, `${DESC}(100) u`, SHEETS.u100),
 };
 
 /* ******************** TESTY POJEDYŃCZE *********** */
@@ -106,21 +106,41 @@ const randomCode = [
 ];
 // Nadanie nazw funkcjom:
 
-const randomFn = [
-	['unSort1', tasks.unSort1],
-	['unSort5', tasks.unSort5],
-	['unSort10', tasks.unSort10],
-	['unSort25', tasks.unSort25],
-	['unSort50', tasks.unSort50],
-	['unSort100', tasks.unSort100],
+const randomFnExt = [
+	['ext1', tasks.ext1],
+	['ext5', tasks.ext5],
+	['ext10', tasks.ext10],
+	['ext25', tasks.ext25],
+	['ext50', tasks.ext50],
+	['ext100', tasks.ext100],
+];
+const randomFnLoc = [
+	['loc1', tasks.loc1],
+	['loc5', tasks.loc5],
+	['loc10', tasks.loc10],
+	['loc25', tasks.loc25],
+	['loc50', tasks.loc50],
+	['loc100', tasks.loc100],
+];
+const randomFnHub = [
+	['hub1', tasks.hub1],
+	['hub5', tasks.hub5],
+	['hub10', tasks.hub10],
+	['hub25', tasks.hub25],
+	['hub50', tasks.hub50],
+	['hub100', tasks.hub100],
 ];
 
-const runRandomSingle = () => {
+const runRandomSingle = geoSet => () => {
 	const [code] = randomFromArray(randomCode, 1);
-	const [fn] = randomFromArray(randomFn, 1);
-	console.log(`Arkusz: ${code} | Fn: ${fn[0]}`);
+	const [fn] = randomFromArray(geoSet, 1);
+	console.log(`Arkusz: ${code} | Liczba modyfikacji: ${fn[0]}`);
 
 	single(code, fn);
 };
 
-export { exps, runRandomSingle };
+const randomExternal = runRandomSingle(randomFnExt);
+const randomLocal = runRandomSingle(randomFnLoc);
+const randomHub = runRandomSingle(randomFnHub);
+
+export { exps, randomExternal, randomLocal, randomHub };

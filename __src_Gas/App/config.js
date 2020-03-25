@@ -33,6 +33,12 @@ const SHEETS = {
 	u100: 'T: 100 (u)',
 };
 
+/* *********************** HUB ******************* */
+const HUB_URL =
+	'https://docs.google.com/spreadsheets/d/12VLf8P3pZSB_VGjY3rNGRZQBufvk86cVB0HkDru_kt4';
+
+/* *********************** EXTERNALS ******************* */
+
 /**
  * URLe zewnętrznych arkuszy do których wklejamy losowe dane
  * @type {Object<string, string>} EXT_SHEET_URL
@@ -55,6 +61,7 @@ const EXT_SHEET_URL = {
 	l16000:
 		'https://docs.google.com/spreadsheets/d/18ujFjrnd1gmm_avfosL6QwadwxeGWMwBStaUT0ClHOQ',
 };
+
 /**
  * Nazwa arkusza w zewnętrznym pliku, w którym znajdują się losowe dane
  * @type {string} EXT_SHEET_NAME
@@ -89,17 +96,17 @@ const LONG_DESC = {
 	sort25: 'Modyfikacja entry by entry (25) s',
 	sort50: 'Modyfikacja entry by entry (50) s',
 	sort100: 'Modyfikacja entry by entry (100) s',
-	unSort1: 'Modyfikacja entry by entry (1) u',
-	unSort5: 'Modyfikacja entry by entry (5) u',
-	unSort10: 'Modyfikacja entry by entry (10) u',
-	unSort25: 'Modyfikacja entry by entry (25) u',
-	unSort50: 'Modyfikacja entry by entry (50) u',
-	unSort100: 'Modyfikacja entry by entry (100) u',
+	ext1: 'Modyfikacja entry by entry (1)',
+	ext5: 'Modyfikacja entry by entry (5)',
+	ext10: 'Modyfikacja entry by entry (10)',
+	ext25: 'Modyfikacja entry by entry (25)',
+	ext50: 'Modyfikacja entry by entry (50)',
+	ext100: 'Modyfikacja entry by entry (100)',
 };
 
 /**
  * Gdzie wkleić wyniki ekspetymentów
- * @type {Object<string, string>}
+//  * @type {Object<string, string>}
  */
 
 const WHERE_TO_PRINT = {
@@ -109,43 +116,36 @@ const WHERE_TO_PRINT = {
 	sort25: SHEETS.s25,
 	sort50: SHEETS.s50,
 	sort100: SHEETS.s100,
-	unSort1: SHEETS.u1,
-	unSort5: SHEETS.u5,
-	unSort10: SHEETS.u10,
-	unSort25: SHEETS.u25,
-	unSort50: SHEETS.u50,
-	unSort100: SHEETS.u100,
+	ext1: 'T: 1',
+	ext5: 'T: 5',
+	ext10: 'T: 10',
+	ext25: 'T: 25',
+	ext50: 'T: 50',
+	ext100: 'T: 100',
+	geo: {
+		loc:
+			'https://docs.google.com/spreadsheets/d/1VYO0IWb24aaf4RRz3Bo01dsF1wuKk75Vvmhb-AWsKoI/edit#gid=1387586056',
+		hub:
+			'https://docs.google.com/spreadsheets/d/1go0ZdOM6qC0AQrYdTtCqLKeC8p1hHod9sAX3qgzon5M/edit#gid=1387586056',
+		ext:
+			'https://docs.google.com/spreadsheets/d/1vlw4rsft39S7KdatpkuIRzx1eoLZEMLJmeSnoS6fN44/edit#gid=717913167',
+	},
+	entries: {
+		e1: 'T: 1',
+		e5: 'T: 5',
+		e10: 'T: 10',
+		e25: 'T: 25',
+		e50: 'T: 50',
+		e100: 'T: 100',
+	},
 };
-
-/**
- * @type {array[]} Zmodyfikowany wiersz do wklejenia
- */
-const MOD_ROW = [
-	[
-		'xyz',
-		'xyz',
-		'xyz',
-		'xyz',
-		'xyz',
-		'xyz',
-		'xyz',
-		'xyz',
-		'xyz',
-		'xyz',
-		'xyz',
-		'xyz',
-		'xyz',
-		'xyz',
-		'xyz',
-	],
-];
 
 export {
 	SHEETS,
 	EXT_SHEET_URL,
 	EXT_SHEET_NAME,
-	MOD_ROW,
 	SHORT_DSC,
 	LONG_DESC,
 	WHERE_TO_PRINT,
+	HUB_URL,
 };

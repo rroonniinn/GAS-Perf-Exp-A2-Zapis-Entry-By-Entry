@@ -3,6 +3,7 @@ import { performanceCheckerObj } from '../../../GAS | Library/v01/utils/performa
 import { paste } from '../../../GAS | Library/v02/gas/paste';
 import { getSheet } from '../../../GAS | Library/v02/gas/getSheet';
 import { pipe } from '../../../GAS | Library/v02/fp/pipe';
+import { getIdFromUrl } from '../../../GAS | Library/v02/gas/getIdFromUrl';
 
 import { SHORT_DSC, LONG_DESC, WHERE_TO_PRINT } from './config';
 
@@ -27,10 +28,11 @@ const runTbT = run('Task By Task');
 /**
  * Wkleja tablicę z czasami do wskazanego arkusza
  * @param {string} sheet
+ * @param {string} [id]
  */
 
-const printTimes = sheet => () =>
-	paste(getSheet(sheet), 'A', loggerRes, {
+const printTimes = (sheet, id) => () =>
+	paste(getSheet(sheet, id), 'A', loggerRes, {
 		notRemoveFilers: true,
 		restrictCleanup: 'preserve',
 	});
@@ -65,7 +67,16 @@ const single = (taskCode, [callbackName, callback]) => {
 		LONG_DESC[callbackName],
 		'Single Random'
 	);
-	printTimes(WHERE_TO_PRINT[callbackName])();
+	const geoCode = /[a-z]+/.exec(callbackName)[0];
+	const entriesCode = `e${/[0-9]+/.exec(callbackName)[0]}`;
+
+	printTimes(
+		WHERE_TO_PRINT.entries[entriesCode],
+		getIdFromUrl(WHERE_TO_PRINT.geo[geoCode])
+	)();
+
+	console.log('--- geoCode ---', geoCode);
+	console.log('--- entriesCode ---', entriesCode);
 };
 
 export { runJbJ, runTbT, fire, single };
