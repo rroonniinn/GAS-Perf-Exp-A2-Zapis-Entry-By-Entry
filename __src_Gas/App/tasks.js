@@ -77,7 +77,7 @@ const modifiyEntries = (geo, quant, sort = false) => sheetCode => () => {
 	const idxs = randomIntegersArray(quant, 0, maxIdx, true, false, sort);
 
 	idxs.forEach(idx => {
-		paste(sheet, `A${idx + 1}:O`, [randomIntegersArray(15, 0, 30)], {
+		paste(sheet, `A${idx + 1}`, [randomIntegersArray(15, 0, 30)], {
 			notRemoveFilers: true,
 			restrictCleanup: 'preserve',
 			notRemoveEmptys: true,
