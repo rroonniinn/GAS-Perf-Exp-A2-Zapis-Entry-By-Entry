@@ -96,12 +96,27 @@ const LONG_DESC = {
 	sort25: 'Modyfikacja entry by entry (25) s',
 	sort50: 'Modyfikacja entry by entry (50) s',
 	sort100: 'Modyfikacja entry by entry (100) s',
-	ext1: 'Modyfikacja entry by entry (1)',
-	ext5: 'Modyfikacja entry by entry (5)',
-	ext10: 'Modyfikacja entry by entry (10)',
-	ext25: 'Modyfikacja entry by entry (25)',
-	ext50: 'Modyfikacja entry by entry (50)',
-	ext100: 'Modyfikacja entry by entry (100)',
+
+	ext1: 'EbE 1: 1 row - Ext',
+	ext5: 'EbE 2: 5 rows - Ext',
+	ext10: 'EbE 3: 10 rows - Ext',
+	ext25: 'EbE 4: 25 rows - Ext',
+	ext50: 'EbE 5: 50 rows - Ext',
+	ext100: 'EbE 6: 100 rows - Ext',
+
+	loc1: 'EbE 1: 1 row - Loc',
+	loc5: 'EbE 2: 5 rows - Loc',
+	loc10: 'EbE 3: 10 rows - Loc',
+	loc25: 'EbE 4: 25 rows - Loc',
+	loc50: 'EbE 5: 50 rows - Loc',
+	loc100: 'EbE 6: 100 rows - Loc',
+
+	hub1: 'EbE 1: 1 row - Hub',
+	hub5: 'EbE 2: 5 rows - Hub',
+	hub10: 'EbE 3: 10 rows - Hub',
+	hub25: 'EbE 4: 25 rows - Hub',
+	hub50: 'EbE 5: 50 rows - Hub',
+	hub100: 'EbE 6: 100 rows - Hub',
 };
 
 /**
