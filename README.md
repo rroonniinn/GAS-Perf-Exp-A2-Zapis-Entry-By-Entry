@@ -1,27 +1,34 @@
-# PRV.016 | GAS Perf. Exp | E03
-## Test: 	Zapis danych do arkusza (cały zakres)
+# Perf. Exp | A.1.1 - Zapis : Entry by Entry : 1 min
 
-#### Kod: Z03
 
 #### Cel
 Poznanie czasów zapisu danych dla:
 1. Różnych struktur arkuszy (internal, external, cache)
-2. Różnych wielkości arkuszy (zestawu danych)"
+2. Różnych wielkości arkuszy (zestawu danych)
+3. Różnych sposobów zapisu danych (customowa funkcja vs natywna)
 
 #### Zadanie
-1. Zapisanie losowej tablicy danych do istniejącego źródła.
-2. Losowa tablica jest generowana w pamięci (czas tej operacji jest znikomy)
-3. Wklejana jest cała tablica 1:1.
-4. Zakres docelowego arkusza jest równy wymiarowi danych - nie są dodawane nowe wiersze ani kolumny"
+1. Zapisanie losowej tablicy danych o różnej długości  (od 1 do 100 wierszy) do istniejącego źródła. Tablica jest wklejana wiersz po wierszu.
+2. Losowa tablica jest generowana w pamięci (czas tej operacji jest znikomy więc nie bieżemy jej pod uwagę)
+3. Poszczególne wiersze tablicy są wklejane w losowe miejsca
+4. Zakres docelowego arkusza nie przekracza liczby wpisów - nie są dodawane nowe wiersze ani kolumny"
 
 
-#### Próbki
-Arkusze o 15 kolumnach, o różnej liczbie wierszy: od 100 do 16 000
+#### Próbki / sample
+Arkusze o 15 kolumnach, o różnej liczbie wierszy: od 100 do 16 000.
 
-#### Warianty
-1. Arkusze osadzone w pliku z którego jest uruchamiany skrypt
-2. Arkusze w odzielnych plikach (zawierające tylko dane testowane)
-3. Arkusze (dane) osadzone w cach'ach"
+#### Struktura
+1. Loc
+2. Hub
+3. Ext
 
-#### Plik
-Adres pliku z czasami i wykresami: https://docs.google.com/spreadsheets/d/1qV5DkLLS2XcZC2Oc3QsikbOtsA41N2PNBKyZghWbytY/edit#gid=252400475
+#### Warianty:
+##### Dla Loc, Hub, Ext:
+Wklejenie tablicy o wymiarach: 1, 5, 10, 25, 50, 100 (czyli tyle niezależnych, pojedyńczych wierszy jest wklejanych jeden po drugim).
+
+#### Częstotliwość testu
+Co 1 minutę
+
+
+#### Pliki na Drivie (wsztstkie wersje czasowe)
+https://drive.google.com/drive/folders/1OZSEdqQlPwi6Kpck1jnge3dj6rofDDi7
