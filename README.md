@@ -1,14 +1,16 @@
-# Perf. Exp | Odczyt : Entry by Entry : 1 min
+# Perf. Exp | A.1.1 - Zapis : Entry by Entry : 1 min
 
 #### Cel
-Poznanie czasów odczytu danych dla:
+Poznanie czasów zapisu danych dla:
 1. Różnych struktur arkuszy (internal, external)
 2. Różnych wielkości arkuszy (zestawu danych)
-3. Różnej liczby wierszy do odczytu
+3. Różnej liczby wierszy do wklejenia
 
 #### Zadanie
-1. Odczytanie losowych wierszy (od 1 do 100 wierszy) bezpośrednio po sobie.
-2. Numery wierszy do odczytu są generowane losowo.
+1. Zapisanie losowej tablicy danych o różnej długości  (od 1 do 100 wierszy) do istniejącego źródła. Tablica jest wklejana wiersz po wierszu.
+2. Losowa tablica jest generowana w pamięci (czas tej operacji jest znikomy więc nie bieżemy jej pod uwagę)
+3. Poszczególne wiersze tablicy są wklejane w losowe miejsca
+4. Zakres docelowego arkusza nie przekracza liczby wpisów - nie są dodawane nowe wiersze ani kolumny"
 
 #### Próbki / sample
 Arkusze o 15 kolumnach, o różnej liczbie wierszy: od 100 do 16 000.
@@ -19,10 +21,11 @@ Arkusze o 15 kolumnach, o różnej liczbie wierszy: od 100 do 16 000.
 3. Ext
 
 #### Warianty:
-Pobranie po sobie: 1, 5, 10, 25, 50, 100 niezależnych wierszy
+##### Dla Loc, Hub, Ext:
+Wklejenie tablicy o wymiarach: 1, 5, 10, 25, 50, 100 (czyli tyle niezależnych, pojedyńczych wierszy jest wklejanych jeden po drugim).
 
 #### Częstotliwość testu
 Co 1 minutę
 
 #### Pliki na Drivie (wsztstkie wersje czasowe)
-https://drive.google.com/drive/folders/1SP-HbqDGzPqsdnQTiLOkA-LBMPEu4Hc3
+https://drive.google.com/drive/folders/1OZSEdqQlPwi6Kpck1jnge3dj6rofDDi7
